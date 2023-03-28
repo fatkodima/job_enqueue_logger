@@ -32,4 +32,5 @@ class TestCase < Minitest::Test
   end
 
   alias assert_not refute
+  alias assert_not_match refute_match
 end
