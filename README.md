@@ -1,24 +1,74 @@
 # JobEnqueueLogger
 
-TODO: Delete this and the text below, and describe your gem
+Log background jobs enqueued by your application (additionally with backtraces). Helps with debugging, or just generally understanding what's going on under the hood. Useful for finding where to start when making changes to a large application.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/job_enqueue_logger`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is very much a development and debugging tool; it is not recommended to use this in a production environment as it is monkey-patching the respective job queuing implementations. You have been warned - use at your own risk.
+
+## Example
+
+When the job is enqueued within the guts of the application, the log line is generated:
+
+```
+Enqueued AvatarThumbnailsJob (jid=578b3d10fc5403f97ee0a8e1) to Sidekiq(default) with arguments: 1092412064
+```
+
+Or with backtraces enabled:
+
+```
+Enqueued AvatarThumbnailsJob (jid=578b3d10fc5403f97ee0a8e1) to Sidekiq(default) with arguments: 1092412064
+↳ app/models/user.rb:421:in `generate_avatar_thumbnails'
+  app/services/user_creator.rb:21:in `call'
+  app/controllers/users_controller.rb:49:in `create'
+```
+
+## Requirements
+
+Requires ruby > 2.7.
+
+This gem supports most common job queuing backends:
+
+* [Sidekiq](https://github.com/sidekiq/sidekiq) >= 6.5.0
+* [Resque](https://github.com/resque/resque) >= 2.0.0
+* [DelayedJob](https://github.com/collectiveidea/delayed_job) >= 4.1.5
+
+If you need support for older rubies or older versions of queuing backends (or additional backends), [open an issue](https://github.com/fatkodima/job_enqueue_logger/issues/new).
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
+```ruby
+# Add this *after* your job queuing gem of choice
+gem 'job_enqueue_logger', group: :development
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+And then execute:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+```sh
+$ bundle
+```
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Or install it yourself as:
 
-## Usage
+```sh
+$ gem install job_enqueue_logger
+```
 
-TODO: Write usage instructions here
+## Configuration
+
+You can override the following default options:
+
+```ruby
+JobEnqueueLogger.configure do |config|
+  # Controls the contents of the printed backtrace.
+  # Is set to default Rails.backtrace_cleaner, when the gem is used in the Rails app.
+  config.backtrace_cleaner = ->(backtrace) { backtrace }
+
+  # Controls whether to print backtraces. Set to `true` to print backtraces, or
+  # a number to limit how many lines to print.
+  config.backtrace = false
+end
+```
 
 ## Development
 
@@ -28,7 +78,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/job_enqueue_logger.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fatkodima/job_enqueue_logger.
 
 ## License
 
