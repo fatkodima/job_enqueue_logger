@@ -1,5 +1,7 @@
 # JobEnqueueLogger
 
+[![Build Status](https://github.com/fatkodima/job_enqueue_logger/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/fatkodima/job_enqueue_logger/actions/workflows/ci.yml)
+
 Log background jobs enqueued by your application (additionally with backtraces). Helps with debugging, or just generally understanding what's going on under the hood. Useful for finding where to start when making changes to a large application.
 
 This is very much a development and debugging tool; it is not recommended to use this in a production environment as it is monkey-patching the respective job queuing implementations. You have been warned - use at your own risk.
