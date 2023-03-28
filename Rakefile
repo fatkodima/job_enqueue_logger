@@ -2,6 +2,7 @@
 
 require "bundler/gem_tasks"
 require "rake/testtask"
+require "rubocop/rake_task"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -37,4 +38,6 @@ task :load_delayed_job_jobs do
 end
 Rake::Task["jobs:workoff"].enhance(["load_delayed_job_jobs"])
 
-task default: :test
+RuboCop::RakeTask.new
+
+task default: [:rubocop, :test]
