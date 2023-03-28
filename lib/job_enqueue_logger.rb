@@ -29,4 +29,5 @@ end
 
 require_relative "job_enqueue_logger/sidekiq_adapter" if defined?(Sidekiq)
 require_relative "job_enqueue_logger/resque_adapter" if defined?(Resque)
+require_relative "job_enqueue_logger/delayed_job_adapter" if defined?(Delayed::Job)
 require_relative "job_enqueue_logger/railtie" if defined?(Rails)

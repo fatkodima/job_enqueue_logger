@@ -11,6 +11,9 @@ Style/StringLiterals:
 Style/Documentation:
   Enabled: false
 
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
 Layout/EmptyLinesAroundAccessModifier:
   EnforcedStyle: only_before
 
@@ -33,4 +36,7 @@ Minitest/MultipleAssertions:
   Enabled: false
 
 Minitest/AssertTruthy:
+  Enabled: false
+
+Minitest/AssertPredicate:
   Enabled: false

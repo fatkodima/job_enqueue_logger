@@ -23,3 +23,12 @@ else
 end
 
 gem "resque-scheduler"
+
+if defined?(@delayed_job_requirement)
+  gem "delayed_job", @delayed_job_requirement
+else
+  gem "delayed_job"
+end
+
+gem "delayed_job_active_record"
+gem "sqlite3" # needed for delayed_job

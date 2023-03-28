@@ -19,4 +19,22 @@ task :load_resque_jobs do
 end
 Rake::Task["resque:preload"].enhance(["load_resque_jobs"])
 
+require "delayed_job"
+require "delayed_job_active_record"
+require "delayed/tasks"
+
+# Needed for delayed_job integration test.
+task :environment # noop
+
+task :load_delayed_job_jobs do
+  require "job_enqueue_logger"
+  require_relative "test/support/delayed_job_jobs"
+
+  require "logger"
+  Delayed::Worker.logger = Logger.new($stdout)
+
+  ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "test/test_db.sqlite3")
+end
+Rake::Task["jobs:workoff"].enhance(["load_delayed_job_jobs"])
+
 task default: :test

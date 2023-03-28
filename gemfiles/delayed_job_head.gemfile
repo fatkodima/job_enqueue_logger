@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+@delayed_job_requirement = { github: "collectiveidea/delayed_job", branch: "master" }
+
+eval_gemfile "../Gemfile"

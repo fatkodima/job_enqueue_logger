@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+@delayed_job_requirement = "~> 4.0"
+
+eval_gemfile "../Gemfile"
