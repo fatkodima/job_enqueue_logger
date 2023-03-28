@@ -15,3 +15,11 @@ if defined?(@sidekiq_requirement)
 else
   gem "sidekiq" # latest
 end
+
+if defined?(@resque_requirement)
+  gem "resque", @resque_requirement
+else
+  gem "resque"
+end
+
+gem "resque-scheduler"

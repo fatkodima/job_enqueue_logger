@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+@resque_requirement = { github: "resque/resque", branch: "master" }
+
+eval_gemfile "../Gemfile"

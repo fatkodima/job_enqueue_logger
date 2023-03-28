@@ -3,11 +3,7 @@
 require_relative "test_helper"
 require_relative "support/sidekiq_jobs"
 
-class SidekiqAdapterTest < Minitest::Test
-  def setup
-    Sidekiq.redis(&:flushdb)
-  end
-
+class SidekiqAdapterTest < TestCase
   def test_perform_async
     output = capture_logging do
       jid = SidekiqJobs::TestJob.perform_async
