@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+@sucker_punch_requirement = "~> 3.0"
+
+eval_gemfile "../Gemfile"

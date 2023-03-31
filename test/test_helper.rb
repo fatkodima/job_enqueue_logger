@@ -7,6 +7,7 @@ require "resque-scheduler"
 require "sqlite3"
 require "delayed_job"
 require "delayed_job_active_record"
+require "sucker_punch"
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "job_enqueue_logger"

@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         ruby: ["2.7", "3.0", "3.1", "3.2"]
-        gemfile: [sidekiq_6, sidekiq_7, sidekiq_head, resque_2, resque_head, delayed_job_4, delayed_job_head]
+        gemfile: [sidekiq_6, sidekiq_7, sidekiq_head, resque_2, resque_head, delayed_job_4, delayed_job_head, sucker_punch_3, sucker_punch_head]
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
     steps:

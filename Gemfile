@@ -32,3 +32,9 @@ end
 
 gem "delayed_job_active_record"
 gem "sqlite3" # needed for delayed_job
+
+if defined?(@sucker_punch_requirement)
+  gem "sucker_punch", @sucker_punch_requirement
+else
+  gem "sucker_punch"
+end

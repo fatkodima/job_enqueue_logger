@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+@sucker_punch_requirement = { github: "brandonhilkert/sucker_punch", branch: "master" }
+
+eval_gemfile "../Gemfile"

@@ -32,6 +32,7 @@ This gem supports most common job queuing backends:
 * [Sidekiq](https://github.com/sidekiq/sidekiq) >= 6.5.0
 * [Resque](https://github.com/resque/resque) >= 2.0.0
 * [DelayedJob](https://github.com/collectiveidea/delayed_job) >= 4.1.5
+* [SuckerPunch](https://github.com/brandonhilkert/sucker_punch) >= 3.0.0
 
 If you need support for older rubies or older versions of queuing backends (or additional backends), [open an issue](https://github.com/fatkodima/job_enqueue_logger/issues/new).
 

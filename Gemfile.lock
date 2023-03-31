@@ -86,6 +86,8 @@ GEM
       rack (>= 1.0)
     sqlite3 (1.6.2-x86_64-darwin)
     sqlite3 (1.6.2-x86_64-linux)
+    sucker_punch (3.1.0)
+      concurrent-ruby (~> 1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
@@ -106,6 +108,7 @@ DEPENDENCIES
   rubocop-minitest
   sidekiq
   sqlite3
+  sucker_punch
 
 BUNDLED WITH
    2.4.7
