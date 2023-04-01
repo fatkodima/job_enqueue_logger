@@ -34,7 +34,13 @@ task :load_delayed_job_jobs do
   require "logger"
   Delayed::Worker.logger = Logger.new($stdout)
 
-  ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "test/test_db.sqlite3")
+  ActiveRecord::Base.establish_connection(
+    adapter: "postgresql",
+    database: "job_enqueue_logger_test",
+    host: "localhost",
+    username: "postgres",
+    password: "postgres"
+  )
 end
 Rake::Task["jobs:workoff"].enhance(["load_delayed_job_jobs"])
 

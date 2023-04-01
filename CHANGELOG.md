@@ -1,5 +1,6 @@
 ## master (unreleased)
 
+- Support `que`
 - Support `sucker_punch`
 
 ## 0.1.0 (2023-03-29)

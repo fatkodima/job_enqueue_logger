@@ -16,4 +16,6 @@ ActiveRecord::Schema.define do
 
     t.index [:priority, :run_at], name: "delayed_jobs_priority"
   end
+
+  Que.migrate!(version: 7)
 end

@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+@que_requirement = { github: "que-rb/que", branch: "master" }
+
+eval_gemfile "../Gemfile"

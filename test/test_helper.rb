@@ -4,10 +4,11 @@
 require "sidekiq"
 require "resque"
 require "resque-scheduler"
-require "sqlite3"
+require "pg"
 require "delayed_job"
 require "delayed_job_active_record"
 require "sucker_punch"
+require "que"
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "job_enqueue_logger"
@@ -21,8 +22,17 @@ end
 
 Delayed::Worker.default_queue_name = "default"
 
-ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "test/test_db.sqlite3")
+ActiveRecord::Base.establish_connection(
+  adapter: "postgresql",
+  database: "job_enqueue_logger_test",
+  host: "localhost",
+  username: "postgres",
+  password: "postgres"
+)
 ActiveRecord::Migration.verbose = false
+
+Que.connection = ActiveRecord
+Que.logger = Logger.new($stdout)
 
 require_relative "support/schema"
 

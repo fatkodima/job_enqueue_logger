@@ -31,10 +31,16 @@ else
 end
 
 gem "delayed_job_active_record"
-gem "sqlite3" # needed for delayed_job
+gem "pg" # needed for delayed_job and que
 
 if defined?(@sucker_punch_requirement)
   gem "sucker_punch", @sucker_punch_requirement
 else
   gem "sucker_punch"
+end
+
+if defined?(@que_requirements)
+  gem "que", @que_requirements
+else
+  gem "que"
 end
