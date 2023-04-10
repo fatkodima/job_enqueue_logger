@@ -9,7 +9,7 @@ class SidekiqAdapterTest < TestCase
       jid = SidekiqJobs::TestJob.perform_async
       assert_jid(jid)
     end
-    assert_match(/Enqueued SidekiqJobs::TestJob \(jid=\w+\) to Sidekiq\(default\)/i, output)
+    assert_match(/\[JobEnqueueLogger\] Enqueued SidekiqJobs::TestJob \(jid=\w+\) to Sidekiq\(default\)/i, output)
   end
 
   def test_perform_async_with_arguments

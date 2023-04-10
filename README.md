@@ -11,13 +11,13 @@ This is very much a development and debugging tool; it is not recommended to use
 When the job is enqueued within the guts of the application, the log line is generated:
 
 ```
-Enqueued AvatarThumbnailsJob (jid=578b3d10fc5403f97ee0a8e1) to Sidekiq(default) with arguments: 1092412064
+[JobEnqueueLogger] Enqueued AvatarThumbnailsJob (jid=578b3d10fc5403f97ee0a8e1) to Sidekiq(default) with arguments: 1092412064
 ```
 
 Or with backtraces enabled:
 
 ```
-Enqueued AvatarThumbnailsJob (jid=578b3d10fc5403f97ee0a8e1) to Sidekiq(default) with arguments: 1092412064
+[JobEnqueueLogger] Enqueued AvatarThumbnailsJob (jid=578b3d10fc5403f97ee0a8e1) to Sidekiq(default) with arguments: 1092412064
 ↳ app/models/user.rb:421:in `generate_avatar_thumbnails'
   app/services/user_creator.rb:21:in `call'
   app/controllers/users_controller.rb:49:in `create'

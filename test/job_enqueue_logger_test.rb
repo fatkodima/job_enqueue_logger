@@ -10,7 +10,7 @@ class JobEnqueueLoggerTest < TestCase
     output = capture_logging do
       SidekiqJobs::TestJob.perform_async
     end
-    assert_match("Enqueued SidekiqJobs::TestJob", output)
+    assert_match("[JobEnqueueLogger] Enqueued SidekiqJobs::TestJob", output)
     assert_not_match(/#{BACKTRACE_LINE_RE} `#{__method__}/, output)
   end
 

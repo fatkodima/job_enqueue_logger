@@ -3,6 +3,7 @@
 module JobEnqueueLogger
   module Utils
     def self.log_job_enqueue(logger, message)
+      message = "[JobEnqueueLogger] #{message}"
       return logger.info(message) unless JobEnqueueLogger.backtrace
 
       backtrace = caller
