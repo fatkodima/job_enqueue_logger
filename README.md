@@ -71,6 +71,10 @@ JobEnqueueLogger.configure do |config|
   # Controls whether to print backtraces. Set to `true` to print backtraces, or
   # a number to limit how many lines to print.
   config.backtrace = false
+
+  # The logger to log to.
+  # Is set to Rails.logger by default, when the gem is used in the Rails app.
+  config.logger = nil
 end
 ```
 

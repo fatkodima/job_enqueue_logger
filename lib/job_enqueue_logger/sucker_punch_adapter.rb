@@ -28,11 +28,7 @@ module JobEnqueueLogger
     end
 
     def self.logger
-      if defined?(Rails)
-        Rails.logger
-      else
-        SuckerPunch.logger
-      end
+      JobEnqueueLogger.logger || SuckerPunch.logger
     end
   end
 end

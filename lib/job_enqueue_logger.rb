@@ -16,7 +16,7 @@ module JobEnqueueLogger
         end
     end
 
-    attr_accessor :backtrace
+    attr_accessor :backtrace, :logger
 
     def configure
       yield self

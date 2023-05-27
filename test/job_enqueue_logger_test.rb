@@ -73,6 +73,17 @@ class JobEnqueueLoggerTest < TestCase
     JobEnqueueLogger.backtrace_cleaner = previous_cleaner
   end
 
+  def test_custom_logger
+    out = StringIO.new
+    logger = Logger.new(out)
+
+    JobEnqueueLogger.stub(:logger, logger) do
+      SidekiqJobs::TestJob.perform_async
+      output = out.string
+      assert_match("[JobEnqueueLogger] Enqueued SidekiqJobs::TestJob", output)
+    end
+  end
+
   private
     def capture_logging(&block)
       out = StringIO.new

@@ -47,8 +47,8 @@ module JobEnqueueLogger
     end
 
     def self.logger
-      if !Sidekiq.server? && defined?(Rails)
-        Rails.logger
+      if !Sidekiq.server? && JobEnqueueLogger.logger
+        JobEnqueueLogger.logger
       else
         Sidekiq.logger
       end

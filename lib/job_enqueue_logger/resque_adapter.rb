@@ -41,8 +41,8 @@ module JobEnqueueLogger
       alias server? server
 
       def logger
-        if !server? && defined?(Rails)
-          Rails.logger
+        if !server? && JobEnqueueLogger.logger
+          JobEnqueueLogger.logger
         else
           Resque.logger
         end

@@ -56,8 +56,8 @@ module JobEnqueueLogger
       # Que.server? is defined in the newest version of Que - https://github.com/que-rb/que/pull/382
       is_server = defined?(Que::CommandLineInterface)
 
-      if !is_server && defined?(Rails)
-        Rails.logger
+      if !is_server && JobEnqueueLogger.logger
+        JobEnqueueLogger.logger
       elsif Que.logger.respond_to?(:call)
         Que.logger.call
       else
