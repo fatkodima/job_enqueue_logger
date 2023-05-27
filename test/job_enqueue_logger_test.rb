@@ -84,6 +84,13 @@ class JobEnqueueLoggerTest < TestCase
     end
   end
 
+  def test_truncates_long_arguments
+    output = capture_logging do
+      SidekiqJobs::TestJobWithArguments.perform_async("a" * 101)
+    end
+    assert_match("with arguments: \"#{'a' * 100}…\"", output)
+  end
+
   private
     def capture_logging(&block)
       out = StringIO.new

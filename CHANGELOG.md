@@ -1,5 +1,6 @@
 ## master (unreleased)
 
+- Truncate long string arguments in log output
 - Add ability to set logger
 - Prefix this gem log lines with `[JobEnqueueLogger]`
 

@@ -20,9 +20,18 @@ module JobEnqueueLogger
 
     def self.args_info(args)
       if Array(args).any?
-        " with arguments: #{Array(args).map(&:inspect).join(', ')}"
+        " with arguments: #{Array(args).map { |arg| format_arg(arg).inspect }.join(', ')}"
       else
         ""
+      end
+    end
+
+    def self.format_arg(arg)
+      case arg
+      when String
+        arg.size > 100 ? "#{arg[0, 100]}…" : arg
+      else
+        arg
       end
     end
   end
